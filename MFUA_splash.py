@@ -49,7 +49,8 @@ def post(mail: str):
         if r.status_code == 200:
             if 'Превышено количество попыток' in r.text:
                 print(f'[{mail}] > Превышено кол. запросов')
-                time.sleep(60)
+                print('Ждём 150с')
+                time.sleep(150)
             else:
                 print(f'[{mail}] > + отправлено.')
         elif r.status_code == 400 or 502:
@@ -104,7 +105,7 @@ else:
 
 if cfg == {}:
     count=0
-    print("Нажмите 'ctrl + c' если закончили")
+    print("Нажмите 'ctrl + c' если закончили | или напишите 'end'")
     print("(Пример: 12345678@s.mfua.ru)")
     try:
         while True:
